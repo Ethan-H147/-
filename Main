@@ -1,9 +1,12 @@
 import doodlepad.*;
 //Ethan Hu
 public class MyFirstOval {
-
+	private static int lemon=5;
+	private int cups = 5;
+	private static int money=100;
 	private RoundRect shpButton;    // Button Shape
 	private RoundRect Button;
+	private RoundRect BuylemonButton;
     private boolean isOn; 
     private boolean isOn2;           // Button state
 	private int position=1;
@@ -13,6 +16,8 @@ public class MyFirstOval {
         shpButton.setFillColor(200);
 		Button = new RoundRect(200,950, 75, 50 , 20, 20);
         shpButton.setFillColor(200);
+        BuylemonButton = new RoundRect(350,950, 75, 50 , 20, 20);
+        BuylemonButton.setFillColor(255,255,0);
         // Starts off
         isOn = false;
 
@@ -39,28 +44,41 @@ public class MyFirstOval {
         
 		if(isOn){
         if (isOn2) {
+			if(lemon>0){
             shpButton.setFillColor(0, 255, 0);
             double[] Xs = new double[] { 650.0+160*i, 650+150.0+160*i, 650+120.0+160*i,650.0+30+160*i};
 		double[] Ys = new double[] {180.0, 180.0, 330.0,330.0};
 		Polygon p1 = new Polygon(Xs, Ys);
 		p1.setFillColor(255,255,168);
 		i=(i+1)%3;//fill up empty cups
-            
+        lemon--;
+       Rectangle lemonCtBox= new Rectangle(1600,30,300,100);
+		Text lemonCt=new Text(Integer.toString(lemon),1750 ,65 );
+        }
+        
         } else {
+			if(lemon>0){
             double[] Xs = new double[] { 650.0+160*i, 650+150.0+160*i, 650+120.0+160*i,650.0+30+160*i};
 		double[] Ys = new double[] {180.0, 180.0, 330.0,330.0};
 		Polygon p2 = new Polygon(Xs, Ys);
 		p2.setFillColor(255,255,168);
 		i=(i+1)%3;//fill up empty cups
+		lemon--;
+		Rectangle lemonCtBox= new Rectangle(1600,30,300,100);
+		Text lemonCt=new Text(Integer.toString(lemon),1750 ,65 );
+	}
         }
 	}
     }
 	
     public static void main(String[] args) {
+		
+		
 		drawMainScene();
+		
 		MyFirstOval myPushButton = new MyFirstOval();
-	  
-     
+		
+		
     }
     
     public static void drawMainScene(){
@@ -86,6 +104,7 @@ public class MyFirstOval {
 		Rectangle bars =new Rectangle(600+25*i, 350, 25, 50);//canopy of the stand
 		if(i%2==0){
 		bars.setFillColor(255, 0, 0);
+		
 	}
 	  }
 	  
@@ -122,6 +141,10 @@ public class MyFirstOval {
 		double[] Ys = new double[] {180.0, 180.0, 330.0,330.0};
 		Polygon p1 = new Polygon(Xs, Ys);//lemonade in cups
 		p1.setFillColor(220,255,255);
+		Rectangle lemonCtBox= new Rectangle(1600,30,300,100);
+		Text lemonCt=new Text(Integer.toString(lemon),1750 ,65 );
+		
+		
 	}
 
 }
