@@ -1,6 +1,7 @@
 import doodlepad.*;
 // Ethan Hu
 public class MyFirstOval {
+
   private static int lemon = 5;
   private int cups = 5;
   private static int sugar= 15;
@@ -17,23 +18,29 @@ public class MyFirstOval {
   private int position = 1;
   public MyFirstOval() {
     // Create button shape and initialize
-    shpButton = new RoundRect(50, 950, 75, 50, 20, 20);
+    shpButton = new RoundRect(50, 950, 100, 50, 20, 20);
     shpButton.setFillColor(200);
-    Button = new RoundRect(200, 950, 75, 50, 20, 20);
+    Button = new RoundRect(200, 950, 100, 50, 20, 20);
     shpButton.setFillColor(200);
-    BuylemonButton = new RoundRect(350, 950, 75, 50, 20, 20);
+    BuylemonButton = new RoundRect(350, 950, 100, 50, 20, 20);
     BuylemonButton.setFillColor(255, 255, 0);
-    BuysugarButton = new RoundRect(500, 950, 75, 50, 20, 20);
+    BuysugarButton = new RoundRect(500, 950, 100, 50, 20, 20);
     BuysugarButton.setFillColor(115	, 136, 188);
-    sellLmndButton = new RoundRect(1800, 950, 75, 50, 20, 20);
+    sellLmndButton = new RoundRect(1800, 950, 100, 50, 20, 20);
     sellLmndButton.setFillColor(255, 255, 168);
+    Text switchScene = new Text("Switch Scene", 60, 970);
+    Text make = new Text("Make", 233,965);
+    Text lemonade = new Text("Lemonade", 219, 980);
     // Starts off
     isOn = false;
 	
 
     // Set button click event handler method
     shpButton.setMousePressedHandler(this::onPressed);
+    switchScene.setMousePressedHandler(this::onPressed);
     Button.setMousePressedHandler(this::onPressed2);
+    make.setMousePressedHandler(this::onPressed2);
+    lemonade.setMousePressedHandler(this::onPressed2);
     BuylemonButton.setMousePressedHandler(this::buyLemon);
     BuysugarButton.setMousePressedHandler(this::buySugar);
     sellLmndButton.setMousePressedHandler(this::sellLmnd);
@@ -47,6 +54,7 @@ public class MyFirstOval {
         shpButton.setFillColor(0, 255, 0);
         drawAltScene(); // switch scene
       } else {
+		shpButton.setFillColor(220, 0, 0);
         drawMainScene(); // switch scene
       }
     }
@@ -159,8 +167,8 @@ public class MyFirstOval {
 
   public static void main(String[] args) {
     drawMainScene();
-
     MyFirstOval myPushButton = new MyFirstOval();
+	 
   }
 
   public static void drawMainScene() {
@@ -226,7 +234,13 @@ public class MyFirstOval {
       showLemon();
       showMoney();
       showSugar();
+      drawSugar();
+      
     }
+  }
+  
+  public static void drawInstructionScreen(){
+	  
   }
   
   public static void showMoney(){
@@ -249,6 +263,15 @@ public class MyFirstOval {
       Text lmndCt = new Text(Integer.toString(lmnd), 1620, 60, 60);
 	  lmndCtBox.setFillColor(255, 255, 168);
   }	  
+  public static void drawSugar(){
+		RoundRect Bottle = new RoundRect(1600, 350, 120, 200, 20, 20);
+		Bottle.setFillColor(220, 255, 255);
+		int a = sugar;
+		Rectangle sugar = new Rectangle(1600,350,120,a);
+		RoundRect bottomSugar = new RoundRect(1600, 540, 120, 10, 20, 20);
+		
+  }
+  
   public static void drawLemon(){
 		Rectangle box = new Rectangle(275, 60, 200, 800);
 		box.setFillColor(55, 55, 55);
