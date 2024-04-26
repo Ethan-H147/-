@@ -31,6 +31,10 @@ public class MyFirstOval {
     Text switchScene = new Text("Switch Scene", 60, 970);
     Text make = new Text("Make", 233,965);
     Text lemonade = new Text("Lemonade", 219, 980);
+    Text buy_lemon = new Text("Buy Lemon", 370, 968);
+    Text buy_sugar = new Text("Buy Sugar", 523, 968);
+    Text sell = new Text("Sell", 1840,965);
+    Text lemonade2 = new Text("Lemonade", 1820, 980);
     // Starts off
     isOn = false;
 	
@@ -42,8 +46,12 @@ public class MyFirstOval {
     make.setMousePressedHandler(this::onPressed2);
     lemonade.setMousePressedHandler(this::onPressed2);
     BuylemonButton.setMousePressedHandler(this::buyLemon);
+    buy_lemon.setMousePressedHandler(this::buyLemon);
     BuysugarButton.setMousePressedHandler(this::buySugar);
+    buy_sugar.setMousePressedHandler(this::buySugar);
     sellLmndButton.setMousePressedHandler(this::sellLmnd);
+    sell.setMousePressedHandler(this::sellLmnd);
+    lemonade2.setMousePressedHandler(this::sellLmnd);
 }
 
     private void onPressed(Shape shp, double x, double y, int button) {
