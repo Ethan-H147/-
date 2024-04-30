@@ -2,12 +2,11 @@ import doodlepad.*;
 // Ethan Hu
 public class MyFirstOval {
 
-  private static int lemon = 5;
-  private int cups = 5;
+  private static int lemon = 5; //things used in the game
   private static int sugar= 15;
   private static int money = 100;
   private static int lmnd=0;
-  private RoundRect shpButton; // Button Shape
+  private RoundRect shpButton; // initialize buttons
   private RoundRect Button;
   private RoundRect BuylemonButton;
   private RoundRect BuysugarButton;
@@ -18,7 +17,7 @@ public class MyFirstOval {
   private int position = 1;
   public MyFirstOval() {
     // Create button shape and initialize
-    shpButton = new RoundRect(50, 950, 100, 50, 20, 20);
+    shpButton = new RoundRect(50, 950, 100, 50, 20, 20);//specify the dimensions of the button and add text label
     shpButton.setFillColor(200);
     Button = new RoundRect(200, 950, 100, 50, 20, 20);
     shpButton.setFillColor(200);
@@ -28,7 +27,7 @@ public class MyFirstOval {
     BuysugarButton.setFillColor(115	, 136, 188);
     sellLmndButton = new RoundRect(1800, 950, 100, 50, 20, 20);
     sellLmndButton.setFillColor(255, 255, 168);
-    Text switchScene = new Text("Switch Scene", 60, 970);
+    Text switchScene = new Text("Sell/Make", 73, 970);
     Text make = new Text("Make", 233,965);
     Text lemonade = new Text("Lemonade", 219, 980);
     Text buy_lemon = new Text("Buy Lemon", 370, 968);
@@ -53,7 +52,7 @@ public class MyFirstOval {
     sell.setMousePressedHandler(this::sellLmnd);
     lemonade2.setMousePressedHandler(this::sellLmnd);
 }
-
+	//switch scenes between sell and make
     private void onPressed(Shape shp, double x, double y, int button) {
       // Toggle button state
       isOn = !isOn;
@@ -66,7 +65,7 @@ public class MyFirstOval {
         drawMainScene(); // switch scene
       }
     }
-
+	//make lemonade using sugar and lemon
     int i = 0;
     private void onPressed2(Shape shp, double x, double y, int button) {
       // Toggle button state
@@ -108,7 +107,7 @@ public class MyFirstOval {
       drawLemon();
     }
     }
-
+	//buy lemon for 5 bucks 
     private void buyLemon(Shape shp, double x, double y, int button) {
       isOn2 = !isOn2;
       if (isOn) {
@@ -132,7 +131,7 @@ public class MyFirstOval {
   drawLemon();
 }
     }
-    
+    //buy 3 sugar for 2 bucks 
     private void buySugar(Shape shp, double x, double y, int button) {
       isOn2 = !isOn2;
       if (isOn) {
@@ -154,7 +153,7 @@ public class MyFirstOval {
   }
 }
     }
-    
+    //sell lemonade, for 3 bucks plus tip from 0-9 
     private void sellLmnd(Shape shp, double x, double y, int button) {
       isOn2 = !isOn2;
       if (!isOn) {
@@ -172,13 +171,13 @@ public class MyFirstOval {
   }
     }
   
-
+	//not a lot of things in main, mostly encapsulated in methods
   public static void main(String[] args) {
     drawMainScene();
     MyFirstOval myPushButton = new MyFirstOval();
 	 
   }
-
+	//sell scene
   public static void drawMainScene() {
     Rectangle sky = new Rectangle(0, 0, 10000, 300); // sky
     sky.setFillColor(135, 195, 255);
@@ -221,16 +220,16 @@ public class MyFirstOval {
     showLmnd();
     showMoney();
   }
-
+	//make scene, in the stall
   public static void drawAltScene() {
 	  
-    Rectangle table = new Rectangle(0, 0, 10000, 930);
+    Rectangle table = new Rectangle(0, 0, 10000, 930);//table
     table.setFillColor(145, 90, 0);
     drawLemon();
-    Rectangle cboard = new Rectangle(600, 400, 600, 450);
+    Rectangle cboard = new Rectangle(600, 400, 600, 450);//lemon cutting board
     cboard.setFillColor(186, 196, 186);
     Rectangle knife = new Rectangle(1300, 200, 200, 350);
-    Rectangle kHandle = new Rectangle(1450, 550, 50, 290);
+    Rectangle kHandle = new Rectangle(1450, 550, 50, 290);//knife
     knife.setFillColor(230, 230, 230);
     kHandle.setFillColor(80, 45, 0);
     for (int i = 0; i < 3; i++) {
@@ -243,34 +242,35 @@ public class MyFirstOval {
       showMoney();
       showSugar();
       drawSugar();
-      
+      //these things change so I have them in methods
     }
   }
   
-  public static void drawInstructionScreen(){
-	  
-  }
-  
+  //money counter in the top right
   public static void showMoney(){
 	  Rectangle moneyBox = new Rectangle(1250, 30, 300, 100);
       Text moneyCt = new Text(Integer.toString(money), 1270, 60, 60);
       moneyBox.setFillColor(0, 143, 50);
   }
+  //lemon counter in the top right
   public static void showLemon(){
       Rectangle lemonCtBox = new Rectangle(1600, 30, 300, 100);
       Text lemonCt = new Text(Integer.toString(lemon), 1620, 60, 60);
 	  lemonCtBox.setFillColor(255, 255, 0);
   }
+  //sugar counter in the top right
   public static void showSugar(){
       Rectangle sugarCtBox = new Rectangle(1600, 150, 300, 100);
       Text sugarCt = new Text(Integer.toString(sugar), 1620, 180, 60);
 	  sugarCtBox.setFillColor(115, 136, 188);
   }
+  //lemonade counter in sell screen
   public static void showLmnd(){
 	  Rectangle lmndCtBox = new Rectangle(1600, 30, 300, 100);
       Text lmndCt = new Text(Integer.toString(lmnd), 1620, 60, 60);
 	  lmndCtBox.setFillColor(255, 255, 168);
   }	  
+  //show sugar in the bottle
   public static void drawSugar(){
 		RoundRect Bottle = new RoundRect(1600, 350, 120, 200, 20, 20);
 		Bottle.setFillColor(220, 255, 255);
@@ -279,7 +279,7 @@ public class MyFirstOval {
 		RoundRect bottomSugar = new RoundRect(1600, 540, 120, 10, 20, 20);
 		
   }
-  
+  //draw lemon on the board
   public static void drawLemon(){
 		Rectangle box = new Rectangle(275, 60, 200, 800);
 		box.setFillColor(55, 55, 55);
